@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: 60%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row-fluid">
+        <div class="span6">
+         <!-- <img class="img-circle" data-src="holder.js/140x140"> -->
+          <h2>Location</h2>
+          <p>
+          <address>	
+          	<strong>APEX</strong><br>
+          <a href="http://goo.gl/maps/2YmLN" target="_blank">
+          	1216 SE Division St. <br>
+          	Portland, Oregon 97202<br>
+         </a> 
+          	(503) APEX-BAR<br>
+          	info (at) apexbar.com<br>
+          </address>
+          </p>
+        </div><!-- /.span6 -->
+        
+        <div class="span6">
+         <!-- <img class="img-circle" data-src="holder.js/140x140"> -->
+          <h2>Hours</h2>
+          <p>11:30am - 2:30am </p>
+          <p>Always tons of bike parking.<br>
+          	Drink, DON'T DRIVE.</p>
+          <p><a href="https://twitter.com/apexbar" class="twitter-follow-button" data-show-count="false">Follow @apexbar</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+</div>
+
+{% endblock content %}
+
+{% block tail_script %}
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    
+{% endblock %}

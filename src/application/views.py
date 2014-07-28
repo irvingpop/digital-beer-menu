@@ -8,91 +8,192 @@ For example the *say_hello* handler, handling the URL route '/hello/<username>',
   must be passed *username* as the argument.
 
 """
+
+
+#google
 from google.appengine.api import users
-from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
 
-from flask import request, render_template, flash, url_for, redirect
+# flask
+from flask import render_template, flash, url_for, redirect, request, jsonify, Response
 
-from flask_cache import Cache
-
+# this app
 from application import app
 from decorators import login_required, admin_required
-from forms import ExampleForm
-from models import ExampleModel
+import util
 
+login_url = users.create_login_url()
+logout_url = users.create_logout_url('/')
 
-# Flask-Cache (configured to use App Engine Memcache API)
-cache = Cache(app)
+syskey = app.config['SYSKEY']
+
 
 def home():
-    return redirect(url_for('list_examples'))
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    location = 'frontpage'
+    return render_template(
+        'home-nofun.html',
+        location=location,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
 
 
-def say_hello(username):
-    """Contrived example to demonstrate Flask's url routing capabilities"""
-    return 'Hello %s' % username
+def faq():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    return render_template(
+        'faq.html',
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
+
+
+def menu():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    beermenu, freshest = util.get_beermenu()
+    return render_template(
+        'menu.html',
+        beermenu=beermenu,
+        freshest=freshest.beerid,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
+
+
+def barmenu():
+    beermenu, freshest = util.get_beermenu()
+    return render_template(
+        'barmenu.html',
+        beermenu=beermenu,
+        freshest=freshest.beerid)
+
+
+def bottlemenu():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    bottlemenu = util.get_bottlemenu()
+    return render_template(
+        'bottlemenu.html',
+        beermenu=bottlemenu,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
 
 
 @login_required
-def list_examples():
-    """List all examples"""
-    examples = ExampleModel.query()
-    form = ExampleForm()
-    if form.validate_on_submit():
-        example = ExampleModel(
-            example_name = form.example_name.data,
-            example_description = form.example_description.data,
-            added_by = users.get_current_user()
-        )
-        try:
-            example.put()
-            example_id = example.key.id()
-            flash(u'Example %s successfully saved.' % example_id, 'success')
-            return redirect(url_for('list_examples'))
-        except CapabilityDisabledError:
-            flash(u'App Engine Datastore is currently in read-only mode.', 'info')
-            return redirect(url_for('list_examples'))
-    return render_template('list_examples.html', examples=examples, form=form)
+def admin():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    return render_template(
+        'admin.html',
+        nofooter=True,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
 
 
 @login_required
-def edit_example(example_id):
-    example = ExampleModel.get_by_id(example_id)
-    form = ExampleForm(obj=example)
-    if request.method == "POST":
-        if form.validate_on_submit():
-            example.example_name = form.data.get('example_name')
-            example.example_description = form.data.get('example_description')
-            example.put()
-            flash(u'Example %s successfully saved.' % example_id, 'success')
-            return redirect(url_for('list_examples'))
-    return render_template('edit_example.html', example=example, form=form)
+def admin_bottlemenu():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    return render_template(
+        'bottleadmin.html',
+        nofooter=True,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
 
 
 @login_required
-def delete_example(example_id):
-    """Delete an example object"""
-    example = ExampleModel.get_by_id(example_id)
-    try:
-        example.key.delete()
-        flash(u'Example %s successfully deleted.' % example_id, 'success')
-        return redirect(url_for('list_examples'))
-    except CapabilityDisabledError:
-        flash(u'App Engine Datastore is currently in read-only mode.', 'info')
-        return redirect(url_for('list_examples'))
+def admin_data():
+    data = util.get_jqgrid_dict(request)
+    return jsonify(data)
+
+
+@login_required
+def admin_data_bottlemenu():
+    data = util.get_jqgrid_dict_bottle(request)
+    return jsonify(data)
+
+
+@login_required
+def admin_edit():
+    user = users.get_current_user()
+    if request.method == 'POST':
+        oper = request.form['oper']
+        if oper == "add":
+            response = util.beermenu_add_item(request, user)
+            return Response(response)
+        if oper == "edit":
+            response = util.beermenu_edit_item(request, user)
+            return Response(response)
+        if oper == "del":
+            response = util.beermenu_del_item(request, user)
+            return Response(response)
+
+
+@login_required
+def admin_edit_bottlemenu():
+    user = users.get_current_user()
+    if request.method == 'POST':
+        oper = request.form['oper']
+        if oper == "add":
+            response = util.bottlemenu_add_item(request, user)
+            return Response(response)
+        if oper == "edit":
+            response = util.bottlemenu_edit_item(request, user)
+            return Response(response)
+        if oper == "del":
+            response = util.bottlemenu_del_item(request, user)
+            return Response(response)
 
 
 @admin_required
-def admin_only():
-    """This view requires an admin account"""
-    return 'Super-seekrit admin page.'
+def admin_migrator():
+    #user = users.get_current_user()
+    if request.method == 'GET':
+        return Response('<html><body><form action="/admin/migrator" method=post><br><input type=submit value="Migrate Data"></form></body></html>')
+    if request.method == 'POST':
+        response = util.beermenu_migrate()
+        return Response(response)
 
 
-@cache.cached(timeout=60)
-def cached_examples():
-    """This view should be cached for 60 sec"""
-    examples = ExampleModel.query()
-    return render_template('list_examples_cached.html', examples=examples)
+@login_required
+def admin_linestatus():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    linestatus_age, linestatus_beer, linestatus_bartender = util.get_linestatus()
+    return render_template(
+        'linestatus.html',
+        linestatus_age=linestatus_age,
+        linestatus_beer=linestatus_beer,
+        linestatus_bartender=linestatus_bartender,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
+
+
+@login_required
+def admin_auditlog():
+    user = users.get_current_user()
+    authorized = util.authorize_user(user)
+    auditlog = util.get_auditlog()
+    return render_template(
+        'auditlog.html',
+        auditlog=auditlog,
+        user=user,
+        authorized=authorized,
+        login_url=login_url,
+        logout_url=logout_url)
 
 
 def warmup():
@@ -100,5 +201,10 @@ def warmup():
     See http://code.google.com/appengine/docs/python/config/appconfig.html#Warming_Requests
 
     """
-    return ''
-
+    warm1 = util.get_beermenu()
+    warm2 = util.get_bottlemenu()
+    warm3 = util.get_jqgrid_dict(None)
+    warm4 = util.get_jqgrid_dict_bottle(None)
+    warm5 = util.get_auditlog()
+    warm6 = util.get_linestatus()
+    return 'Warmed up!'

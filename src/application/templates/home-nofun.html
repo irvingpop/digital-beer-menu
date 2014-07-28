@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: 60%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row-fluid">
+
+        <div class="span4" style="text-align: center; vertical-align: bottom">
+          <h2>Location</h2>
+          <p>
+          <address>	
+          	<strong>APEX</strong><br>
+          <a href="http://goo.gl/maps/2YmLN" target="_blank">
+          	1216 SE Division St. <br>
+          	Portland, Oregon 97202<br>
+         </a> 
+          	(503) APEX-BAR<br>
+          <a href="/faq">info (at) apexbar.com</a><br>
+          </address>
+          </p>
+        </div><!-- /.span6 -->
+
+
+        <div class="span4 hidden-phone"
+          style="background-image:
+            url('/static/img/apex/APEXlogo_transparent-smaller.png');
+            height: 160px;
+            width: 350px;
+            padding-right: 30px;
+            background-position: center;
+            background-size: cover;" >
+        </div>
+
+        <div class="span4" style="text-align: center; vertical-align: bottom">
+          <h2>Hours</h2>
+          <p>11:30am - 2:30am </p>
+          <p>Always tons of bike parking.<br>
+          	Drink, DON'T DRIVE.</p>
+          <p><a href="https://twitter.com/apexbar" class="twitter-follow-button" data-show-count="false">Follow @apexbar</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+        </div><!-- /.span4 -->
+
+
+      </div><!-- /.row -->
+
+</div>
+
+{% endblock content %}
+

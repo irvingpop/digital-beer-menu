@@ -19,21 +19,17 @@
                 <th>Added by</th>
                 <th>Added on</th>
                 <th>&nbsp;</th>
-                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
             {% for example in examples %}
-            {% set example_id = example.key.id() %}
+            {% set example_id = example.key().id() %}
             <tr>
                 <td>{{ example_id }}</td>
                 <td>{{ example.example_name }}</td>
                 <td>{{ example.example_description }}</td>
                 <td>{{ example.added_by }}</td>
-                <td class="nowrap">{{ example.timestamp.strftime('%b %d, %Y %I:%M %p') }}</td>
-                <td>
-                    <a href="{{ url_for('edit_example', example_id=example_id) }}" class="btn">Edit</a>
-                </td>
+                <td>{{ example.timestamp.strftime('%b %d, %Y %I:%M %p') }}</td>
                 <td>
                     <form method="post" action="{{ url_for('delete_example', example_id=example_id) }}">
                         <button class="btn">Delete</button>
@@ -41,7 +37,7 @@
                 </td>
             </tr>
             {% else %}
-            <tr><td colspan="7">No examples yet</td></tr>
+            <tr><td colspan="6">No examples yet</td></tr>
             {% endfor %}
         </tbody>
     </table>
@@ -81,7 +77,9 @@
             }
         };
         $(document).ready(function() {
+            // Enable modal dialog (via Bootstrap's 'modal' plugin)
+            $('#new-example-modal').modal({'show': false});
             FormHelpers.init();
         });
     </script>
-{% endblock tail_script %}
+{% endblock %}

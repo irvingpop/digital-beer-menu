@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: auto; }
+        .marketing .span12 {margin-top: 90px; }
+        .table th {font-weight: bolder; color: #FCFCFC; }
+        .table td {font-weight: normal;}
+    
+    	.table-striped tbody > tr:nth-child(odd) > td,
+		.table-striped tbody > tr:nth-child(odd) > th {
+			  background-color: #2B2828;
+		}    
+    </style>
+{% endblock %}
+
+{% macro diff_dicts(old_dict,new_dict) -%}
+    {%- if old_dict  %}
+        {%- for key in old_dict.to_dict() %}
+            {%- if old_dict[key] != new_dict[key]  %}
+                {%- set key = key %}
+                {%- set old_val = old_dict[key] %}
+                {%- set new_val = new_dict[key] %}
+                <li>What: {{ key }} | Old: {{ old_val }} | New: {{ new_val }}</li>
+            {%- endif  %}
+        {%- endfor  %}
+    {%- elif new_dict  %}
+        {%- for key in new_dict.to_dict() %}
+                {%- set key = key %}
+                {%- set new_val = new_dict[key] %}
+                <li>Key: {{ key }}  Added: {{ new_val }}</li>
+        {%- endfor  %}
+    {%- endif  %}
+{%- endmacro  %}
+
+
+{% block content %}
+
+<div class="container marketing">
+  <div class="row-fluid">
+    <div class="span12">
+    <h2>Audit Log</h2>
+      <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+          <tr>
+            <th class="span1">Operation</th>
+            <th class="span2">User</th>
+            <th class="span2">Time</th>
+            <th class="span6">What was Changed</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in auditlog %}
+          	{% if item.oper == 'edit' %}
+                <tr class="warning">
+            {% elif item.oper == 'del' %}
+                <tr class="error">
+            {% else %}
+                <tr>
+            {% endif %}
+                <td>{{item.oper}}</td>
+                <td>{{item.user}}</td>
+                <td>{{item.timestamp}}</td>
+                <td>
+                <ul>
+                    {{ diff_dicts(item.orig_values, item.new_values) }}
+                </ul>
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+ </div>
+   
+{% endblock content %}
+
+{% block tail_script %}
+    
+{% endblock %}
