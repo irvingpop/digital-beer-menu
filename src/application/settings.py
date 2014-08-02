@@ -10,15 +10,10 @@ Important: Place your keys in the secret_keys.py module,
 
 import os
 
-from secret_keys import CSRF_SECRET_KEY, SESSION_KEY, SECRET_MIGRATOR_USERNAME, SECRET_MIGRATOR_PASSWORD, SECRET_MIGRATOR_URL
+from secret_keys import CSRF_SECRET_KEY, SESSION_KEY
 
 # key for storing the beer id
 SYSKEY = 'production'
-
-# for util.beermenu_migrate
-MIGRATOR_USERNAME = SECRET_MIGRATOR_USERNAME
-MIGRATOR_PASSWORD = SECRET_MIGRATOR_PASSWORD
-MIGRATOR_URL = SECRET_MIGRATOR_URL
 
 DEBUG_MODE = False
 GAEMINIPROFILER_PROFILER_ADMINS = False

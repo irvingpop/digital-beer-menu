@@ -49,7 +49,7 @@ def clear_caches_bottlemenu():
 
 @cache.memoize()
 def get_beermenu():
-    beermenu = models.BeerMenu.query(models.BeerMenu.active is True).fetch()
+    beermenu = models.BeerMenu.query(models.BeerMenu.active == True).fetch()
     freshest = models.FreshestBeer.get_or_insert(syskey)
     beermenu_sorted = sorted(beermenu, key=lambda self: strip_accents(self.name.lower()))
     return beermenu_sorted, freshest
@@ -57,7 +57,7 @@ def get_beermenu():
 
 @cache.memoize()
 def get_bottlemenu():
-    bottlemenu = models.BottleMenu.query(models.BottleMenu.active is True).fetch()
+    bottlemenu = models.BottleMenu.query(models.BottleMenu.active == True).fetch()
     bottlemenu_sorted = sorted(bottlemenu, key=lambda self: strip_accents(self.name.lower()))
     return bottlemenu_sorted
 

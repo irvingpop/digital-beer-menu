@@ -37,7 +37,6 @@ app.add_url_rule('/barmenu', 'barmenu', view_func=views.barmenu)
 app.add_url_rule('/admin', 'admin', view_func=views.admin)
 app.add_url_rule('/admin/data', 'admin_data',  methods=['GET', 'POST'], view_func=views.admin_data)
 app.add_url_rule('/admin/edit', 'admin_edit',  methods=['GET', 'POST'], view_func=views.admin_edit)
-app.add_url_rule('/admin/migrator', 'admin_migrator',  methods=['GET', 'POST'], view_func=views.admin_migrator)
 
 # Bottle Menu
 app.add_url_rule('/admin/bottlemenu', 'admin_bottlemenu', view_func=views.admin_bottlemenu)

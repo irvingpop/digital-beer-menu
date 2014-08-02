@@ -156,16 +156,6 @@ def admin_edit_bottlemenu():
             return Response(response)
 
 
-@admin_required
-def admin_migrator():
-    #user = users.get_current_user()
-    if request.method == 'GET':
-        return Response('<html><body><form action="/admin/migrator" method=post><br><input type=submit value="Migrate Data"></form></body></html>')
-    if request.method == 'POST':
-        response = util.beermenu_migrate()
-        return Response(response)
-
-
 @login_required
 def admin_linestatus():
     user = users.get_current_user()

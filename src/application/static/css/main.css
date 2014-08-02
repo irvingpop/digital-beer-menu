@@ -130,10 +130,22 @@ h2, h3, h4         { font-family: 'Bitter', 'Georgia', serif; }
     }
     .marketing h2 {
       font-weight: normal;
+      color: #ffffff;
     }
     .marketing .span6 p {
       margin-left: 10px;
       margin-right: 10px;
+    }
+    .marketing a {
+      color: #999999;
+    }
+
+    .white {
+      color: #ffffff;
+    }
+
+    .grey {
+      color: #999999;
     }
 
 
