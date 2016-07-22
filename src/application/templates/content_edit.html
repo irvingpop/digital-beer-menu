@@ -1,0 +1,10 @@
+{% extends 'admin/model/create.html' %}
+
+{% block tail %}
+    {{ super() }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.10/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replaceAll();
+      CKEDITOR.config.allowedContent = true;
+    </script>
+{% endblock %}

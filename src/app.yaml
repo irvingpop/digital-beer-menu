@@ -1,5 +1,6 @@
-application: apexbeermenu
+application: apexbeermenu-v2
 version: 2
+vm: false
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -39,6 +40,8 @@ handlers:
 - url: /static
   static_dir: application/static
 
+- url: /content_admin/static
+  static_dir: lib/flask_admin/static
+
 - url: .*
   script: run.application.app
-

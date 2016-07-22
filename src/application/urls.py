@@ -14,6 +14,9 @@ from google.appengine.api import users
 login_url = users.create_login_url()
 logout_url = users.create_logout_url('/')
 
+# Content admin
+import content_admin
+
 
 ## URL dispatch rules
 # App Engine warm up handler

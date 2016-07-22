@@ -6,11 +6,11 @@
         .marketing .span12 {margin-top: 90px; }
         .table th {font-weight: bolder; color: #FCFCFC; }
         .table td {font-weight: normal;}
-    
+
     	.table-striped tbody > tr:nth-child(odd) > td,
 		.table-striped tbody > tr:nth-child(odd) > th {
 			  background-color: #2B2828;
-		}    
+		}
     </style>
 {% endblock %}
 
@@ -19,81 +19,16 @@
 <div class="container marketing grey">
   <div class="row-fluid">
     <div class="span12">
-    <h2>Frequently Asked Questions</h2>
-        <p>
-            Q: Do you fill growlers?<br />
-            A: No.
-        </p>
+    <h2>{{ content['faq']['title'] }}</h2>
 
-        <p>
-            Q: What forms of payment do you accept.<br>
-            A: Cash only, please pay as you go. We have an ATM.
-        </p>
-
-        <p>
-            Q: Can I bring my well behaved pet/minor to the beer garden?<br>
-            A: No.
-        </p>
-
-        <p>
-            Q: Can I buy a glass you have?<br>
-            A: Thanks for asking, depends on the glass, but for the most part, yes.
-        </p>
-
-        <p>
-            Q: When will you have the item of APEX clothing I want back in stock?<br>
-            A: <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fapexbar.com%2Ffaq%2F&region=follow_link&screen_name=apexbar&tw_p=followbutton&variant=2.0">
-            Follow us on Twitter</a> and you’ll hear the announcement, or look at the shelf when you come in.
-        </p>
-
-        <p>
-            Q: Are bottles available to go?<br>
-            A: Yes, over 250 different kinds.
-        </p>
-
-        <p>
-            Q: Can I make a reservation?<br>
-            A: No.
-        </p>
-
-        <p>
-            Q: What kind of food do you serve?<br>
-            A: None. You’re welcome to bring whatever food you’d like to enjoy with your beer.
-        </p>
-
-        <p>
-            Q: Will you show the college or major league football, baseball or basketball game I’m interested in?<br>
-            A: No.
-        </p>
-
-        <p>
-            Q: Do you have Pliny the Elder?<br>
-            A: Check <a href="/menu">the menu</a>, if it’s on there, it’s pouring.
-        </p>
-
-        <p>
-            Q: When are you pouring Pliny the Younger? Can I buy tickets?<br>
-            A: When it gets here. First come, first served. <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fapexbar.com%2Ffaq%2F&region=follow_link&screen_name=apexbar&tw_p=followbutton&variant=2.0">
-            Follow us on Twitter</a> for more info, that’s the only place where advanced info will be given.
-        </p>
-
-        <p>
-            Q: When aren’t you open for your regular hours?<br>
-            A: We’re closed all day on Thanksgiving and on Christmas day we open at 7PM.
-        </p>
-
-        <p>
-            Q: Can you turn the music down or play something else?<br>
-            A: No. We have free earplugs available if you’d like some.
-        </p>
-
+      {{ content['faq']['content']|safe }}
 
     </div>
   </div>
  </div>
-   
+
 {% endblock content %}
 
 {% block tail_script %}
-    
+
 {% endblock %}
