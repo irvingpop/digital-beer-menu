@@ -59,6 +59,10 @@ def check_sane_defaults():
             new_item.content = "<p>Put some stuff here</p>"
             new_item.put()
 
+    clear_content_cache()
+
+    return True
+
 # return a dict of all the contents in one shot, so they're cached together
 @cache.memoize()
 def get_content_cache():

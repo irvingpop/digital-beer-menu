@@ -1,5 +1,5 @@
 application: apexbeermenu-v2
-version: 2
+version: 3
 vm: false
 runtime: python27
 api_version: 1

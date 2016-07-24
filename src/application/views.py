@@ -17,11 +17,8 @@ from google.appengine.api import users
 from flask import render_template, flash, url_for, redirect, request, jsonify, Response
 
 # this app
-from application import app
-from application import content_admin
+from application import app, content_admin, util
 from decorators import login_required, admin_required
-import util
-import content_admin
 
 login_url = users.create_login_url()
 logout_url = users.create_logout_url('/')
@@ -195,12 +192,12 @@ def warmup():
     See http://code.google.com/appengine/docs/python/config/appconfig.html#Warming_Requests
 
     """
+    warm0 = content_admin.check_sane_defaults()
     warm1 = util.get_beermenu()
     warm2 = util.get_bottlemenu()
     warm3 = util.get_jqgrid_dict(None)
     warm4 = util.get_jqgrid_dict_bottle(None)
     warm5 = util.get_auditlog()
     warm6 = util.get_linestatus()
-    warm7 = content_admin.check_sane_defaults()
     warm7 = content_admin.get_content_cache()
-    return 'Warmed up!'
+    return True
