@@ -2,11 +2,11 @@
 
 /* Your customizations here */
 
-@import url(http://fonts.googleapis.com/css?family=Oleo+Script:400,700|Bevan:400|Bitter:400,700|Playfair+Display+SC);
+@import url(//fonts.googleapis.com/css?family=Oleo+Script:400,700|Bevan:400|Bitter:400,700|Playfair+Display+SC);
 
-body         { font-family: 'Bitter', 'Georgia', serif; }
+body         { font-family: 'Bitter', 'Georgia', serif; color: white; }
 h1         { font-family: 'Bitter', 'Georgia', serif; }
-h2, h3, h4         { font-family: 'Bitter', 'Georgia', serif; }
+h2, h3, h4         { font-family: 'Bitter', 'Georgia', serif; color: white; }
 .navbar .brand         { font-family: 'Bevan', 'Garamond', serif; font-size: 48px; }
 
 
@@ -17,8 +17,8 @@ h2, h3, h4         { font-family: 'Bitter', 'Georgia', serif; }
     body {
       padding-bottom: 40px;
     }
-    
-    footer { 
+
+    footer {
 		padding-top: 40px;
 		color: #5a5a5a;
    	}

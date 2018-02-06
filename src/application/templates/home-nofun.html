@@ -20,18 +20,8 @@
       <div class="row-fluid">
 
         <div class="span4" style="text-align: center; vertical-align: bottom">
-          <h2>Location</h2>
-          <p>
-          <address>	
-          	<strong>APEX</strong><br>
-          <a href="http://goo.gl/maps/2YmLN" target="_blank">
-          	1216 SE Division St. <br>
-          	Portland, Oregon 97202<br>
-         </a> 
-          	(503) APEX-BAR<br>
-          <a href="/faq">info (at) apexbar.com</a><br>
-          </address>
-          </p>
+          <h2>{{ content['info_left']['title'] }}</h2>
+              {{ content['info_left']['content']|safe }}
         </div><!-- /.span6 -->
 
 
@@ -46,14 +36,8 @@
         </div>
 
         <div class="span4" style="text-align: center; vertical-align: bottom">
-          <h2>Hours</h2>
-          <div class="grey">
-          <p>11:30am - 2:30am </p>
-          <p>Always tons of bike parking.<br>
-          	Drink, DON'T DRIVE.</p>
-            </div>
-          <p><a href="https://twitter.com/apexbar" class="twitter-follow-button" data-show-count="false">Follow @apexbar</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+          <h2>{{ content['info_right']['title'] }}</h2>
+              {{ content['info_right']['content']|safe }}
         </div><!-- /.span4 -->
 
 
@@ -62,4 +46,3 @@
 </div>
 
 {% endblock content %}
-

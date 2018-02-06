@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <title>{% block title%}Apex Bar PDX{% endblock %}</title>
     <link href="/static/css/bootstrap-2.2.1-cyborg.min.css" rel="stylesheet" />
-    <!-- <link href="/static/css/bootstrap-responsive-{{ bootstrap_version }}.min.css" rel="stylesheet" /> -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link href="/static/css/main.css" rel="stylesheet" />
@@ -31,7 +30,7 @@
     {% if not nofooter %}
     <footer>
         <div id="footer" class="container">
-        <p class="pull-right">&copy; 2014 Apex Bar &middot; All Rights Reserved<br>
+        <p class="pull-right">&copy; 2018 Apex Bar &middot; All Rights Reserved<br>
 		{% if user %}
         	<a href="{{ logout_url }}">Log Out, </a> {{ user.nickname() }}
         {% else %}
@@ -42,8 +41,7 @@
         </div><!-- /footer -->
     </footer>
     {% endif %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!-- <script src="/static/js/lib/bootstrap-{{ bootstrap_version }}.min.js"></script> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="/static/js/main.js"></script>
     {% block tail_script %}<!-- defer-capable JS block -->{% endblock %}
