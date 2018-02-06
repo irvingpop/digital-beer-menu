@@ -37,9 +37,12 @@ handlers:
 
 - url: /static
   static_dir: application/static
+  secure: always
 
 - url: /content_admin/static
   static_dir: lib/flask_admin/static
+  secure: always
 
 - url: .*
   script: run.application.app
+  secure: always
