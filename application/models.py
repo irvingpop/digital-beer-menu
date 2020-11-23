@@ -6,7 +6,7 @@ App Engine datastore models
 
 """
 from google.cloud import ndb
-from application.flask_admin_patch.view import NdbModelView
+from flask_admin_patch.view import NdbModelView
 from application import util, users, content_admin
 from flask import redirect, request
 
