@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>{% block title%}Apex Bar PDX{% endblock %}</title>
+    <link href="/static/css/bootstrap-2.2.1-cyborg.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    {% block style_block %}<!-- page-specific CSS -->{% endblock %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>{# Modernizr must be here, above body tag. #}
+    {% block head_script %}<!-- defer-incapable JS block -->{% endblock %}
+
+</head>
+<body>
+    <div id="header">
+      	{% include 'includes/nav.html' %} {# pull in navbar #}
+    	{% if location == "frontpage" %}
+        	{% include 'includes/carousel-nofun.html' %} {# pull in navbar #}
+        {% endif %}
+    </div>
+    <div class="container" id="maincontent">
+        <div id="body_content">
+            {% block content %}<!-- main content area -->{% endblock %}
+        </div>
+    </div><!-- /container -->
+    {% if not nofooter %}
+    <footer>
+        <div id="footer" class="containee">
+        <p class="pull-right">&copy; 2020 Apex Bar &middot; All Rights Reserved<br>
+        {% if current_user["id"] %}
+        	<a href="{{ current_user['logout_url'] }}">Log Out, </a> {{ current_user["id"] }}
+        {% else %}
+        	<a href="{{ current_user['login_url'] }}" style="color: #5A5A5A">Log In</a>
+        {% endif %}
+
+        </p>
+            {% block footer %}<!-- footer -->{% endblock %}
+        </div><!-- /footer -->
+    </footer>
+    {% endif %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    {% block tail_script %}<!-- defer-capable JS block -->{% endblock %}
+    {{ profiler_includes|safe }}
+</body>
+</html>

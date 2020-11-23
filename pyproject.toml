@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "beermenu-v3"
+version = "0.1.0"
+description = "Digital Beer Menu"
+authors = ["Irving Popovetsky <irving@popovetsky.com>"]
+license = "Apache 2"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^1.1.2"
+googleapis-common-protos = "^1.52.0"
+google-cloud-ndb = "^1.7.1"
+Flask-WTF = "^0.14.3"
+WTForms-Appengine = "^0.1"
+Flask-Caching = "^1.9.0"
+Flask-Admin = "^1.5.7"
+Flask-Dance = "^3.1.0"
+
+[tool.poetry.dev-dependencies]
+python-dotenv = "^0.15.0"
+autopep8 = "^1.5.4"
+flake8 = "^3.8.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
