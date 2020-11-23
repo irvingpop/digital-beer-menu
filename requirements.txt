@@ -1,6 +1,5 @@
 cachetools==4.1.1; python_version >= "3.5" and python_version < "4.0" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0")
 certifi==2020.11.8; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-cffi==1.14.3; platform_python_implementation == "CPython" and sys_platform == "win32" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0")
 chardet==3.0.4; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 click==7.1.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 flask-admin==1.5.7
@@ -8,14 +7,12 @@ flask-caching==1.9.0
 flask-dance==3.1.0
 flask-wtf==0.14.3
 flask==1.1.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
-gevent==20.9.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 google-api-core==1.23.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 google-auth==1.23.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 google-cloud-core==1.4.3; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 google-cloud-datastore==1.15.3; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 google-cloud-ndb==1.7.1
 googleapis-common-protos==1.52.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.4.0")
-greenlet==0.4.17; python_version >= "2.7" and python_full_version < "3.0.0" and platform_python_implementation == "CPython" or python_full_version >= "3.5.0" and platform_python_implementation == "CPython"
 grpcio==1.33.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 gunicorn==20.0.4; python_version >= "3.4"
 idna==2.10; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
@@ -26,7 +23,6 @@ oauthlib==3.1.0; python_version >= "2.7" and python_full_version < "3.0.0" or py
 protobuf==3.14.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 pyasn1-modules==0.2.8; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 pyasn1==0.4.8; python_version >= "3.5" and python_full_version < "3.0.0" and python_version < "4" and (python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.5") or python_version >= "3.5" and python_version < "4" and (python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.5") and python_full_version >= "3.4.0"
-pycparser==2.20; python_version >= "2.7" and python_full_version < "3.0.0" and platform_python_implementation == "CPython" and sys_platform == "win32" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0") or platform_python_implementation == "CPython" and sys_platform == "win32" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0") and python_full_version >= "3.4.0"
 pymemcache==3.4.0
 pytz==2020.4; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 redis==3.5.3; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
@@ -38,5 +34,3 @@ urllib3==1.26.2; python_version >= "2.7" and python_full_version < "3.0.0" or py
 urlobject==2.4.3
 werkzeug==1.0.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 wtforms==2.3.3
-zope.event==4.5.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-zope.interface==5.2.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
