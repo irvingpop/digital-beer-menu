@@ -1,0 +1,8 @@
+
+env_variables:
+  GOOGLE_OAUTH_CLIENT_ID: get_from_google
+  GOOGLE_OAUTH_CLIENT_SECRET: get_from_google
+  OAUTHLIB_RELAX_TOKEN_SCOPE: true
+  OAUTHLIB_INSECURE_TRANSPORT: true
+  CSRF_SECRET_KEY: generate_a_24char_alphastring
+  SESSION_KEY: generate_a_24char_alphastring
