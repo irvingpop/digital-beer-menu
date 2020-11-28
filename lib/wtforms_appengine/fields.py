@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import decimal
 import operator
+from builtins import str
 
 from wtforms import fields, widgets
 from wtforms.compat import text_type, string_types
@@ -117,7 +118,7 @@ class KeyPropertyField(fields.SelectFieldBase):
         super(KeyPropertyField, self).__init__(label, validators, **kwargs)
         if get_label is None:
             self.get_label = lambda x: x
-        elif isinstance(get_label, basestring):
+        elif isinstance(get_label, str):
             self.get_label = operator.attrgetter(get_label)
         else:
             self.get_label = get_label

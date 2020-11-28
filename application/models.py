@@ -7,8 +7,8 @@ App Engine datastore models
 """
 from google.cloud import ndb
 from flask_admin_patch.view import NdbModelView
-from application import util, users, content_admin
-from flask import redirect, request
+from application import users, content_admin
+from flask import redirect
 
 
 class BeerMenu(ndb.Model):
@@ -69,10 +69,13 @@ class BottleMenu(ndb.Model):
     url = ndb.StringProperty()
 
 # Content Admin
+
+
 class Content(ndb.Model):
     name = ndb.StringProperty()
     title = ndb.StringProperty()
     content = ndb.TextProperty()
+
 
 class PageAdmin(NdbModelView):
     # form_overrides = dict(text=CKTextAreaField)
@@ -92,5 +95,5 @@ class PageAdmin(NdbModelView):
         return users.authorize_user()
 
     def inaccessible_callback(self, name, **kwargs):
-        #redirect to login page if user doesn't have access
+        # redirect to login page if user doesn't have access
         return redirect(users.create_login_url())

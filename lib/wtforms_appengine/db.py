@@ -91,7 +91,7 @@ class:
    ContactForm = model_form(Contact, base_class=BaseContactForm)
 
 """
-from wtforms import Form, validators, widgets, fields as f
+from wtforms import Form, validators, fields as f
 from wtforms.compat import iteritems
 from .fields import GeoPtPropertyField, ReferencePropertyField, StringListPropertyField
 
@@ -313,6 +313,7 @@ class ModelConverter(object):
     | _ReverseReferenceP.| None              | <iterable>   | always skipped   |
     +====================+===================+==============+==================+
     """
+    # flake8: noqa
     default_converters = {
         'StringProperty':        convert_StringProperty,
         'ByteStringProperty':    convert_ByteStringProperty,

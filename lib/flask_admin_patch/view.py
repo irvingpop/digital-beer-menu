@@ -10,6 +10,7 @@ from flask_wtf import Form
 from flask_admin.model.form import create_editable_list_form
 from .form import AdminModelConverter
 
+
 class NdbModelView(BaseModelView):
     """
     AppEngine NDB model scaffolding.
@@ -139,6 +140,7 @@ class NdbModelView(BaseModelView):
             self.after_model_delete(model)
 
         return True
+
 
 def ModelView(model):
     if issubclass(model, ndb.Model):

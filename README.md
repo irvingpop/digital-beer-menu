@@ -8,12 +8,18 @@ It's awesome because it is virtually free (costs pennies per month at most), rid
 # Dev Notes
 
 ## Running in local dev
-1. Install gcloud
-1. `poetry install`  (Note: you must install https://python-poetry.org/ first)
-1. run the gcloud datastore emulator locally: `gcloud beta emulators datastore start`
-1. Instruct your app to use the datastore emulator: `$(gcloud beta emulators datastore env-init)`
+1. Install and configure the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+1. Run `poetry install`  (Note: you must install https://python-poetry.org/ first)
+1. run the gcloud datastore emulator locally and instruct your app to use it:
+    ```
+    gcloud beta emulators datastore start &
+    $(gcloud beta emulators datastore env-init)
+    ```
 1. Configure secrets in a `.flaskenv` file - see `.flaskenv.example`
-1. Run the app: poetry run python3 run.py
+1. Run the app:
+    ```
+    poetry run python3 run.py
+    ```
 
 # Deploying
 1. Configure secrets in a `env-production.yaml` file - see `env-production.yaml.example`

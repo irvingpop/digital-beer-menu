@@ -5,10 +5,11 @@ URL route handlers
 """
 
 # flask
-from flask import render_template, flash, url_for, redirect, request, jsonify, Response
+from flask import render_template, request, jsonify, Response
 
 # this app
-from application import app, content_admin, beermenu, bottlemenu, util, users
+from application import content_admin, beermenu, bottlemenu, users
+
 
 def disp_home():
     location = 'frontpage'
@@ -16,14 +17,14 @@ def disp_home():
         'home-nofun.html',
         content=content_admin.get_content_cache(),
         location=location,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 def disp_faq():
     return render_template(
         'faq.html',
         content=content_admin.get_content_cache(),
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 def disp_menu():
@@ -32,7 +33,7 @@ def disp_menu():
         'menu.html',
         beermenu=beermenu_dict,
         freshest=freshest.beerid,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 def disp_barmenu():
@@ -48,7 +49,7 @@ def disp_bottlemenu():
     return render_template(
         'bottlemenu.html',
         beermenu=bottlemenu_dict,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 @users.login_required
@@ -56,7 +57,7 @@ def admin():
     return render_template(
         'admin.html',
         nofooter=True,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 @users.login_required
@@ -64,7 +65,7 @@ def admin_bottlemenu():
     return render_template(
         'bottleadmin.html',
         nofooter=True,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 @users.login_required
@@ -84,13 +85,16 @@ def admin_edit():
     if request.method == 'POST':
         oper = request.form['oper']
         if oper == "add":
-            response = beermenu.beermenu_add_item(request, users.get_current_user())
+            response = beermenu.beermenu_add_item(
+                request, users.get_current_user())
             return Response(response)
         if oper == "edit":
-            response = beermenu.beermenu_edit_item(request, users.get_current_user())
+            response = beermenu.beermenu_edit_item(
+                request, users.get_current_user())
             return Response(response)
         if oper == "del":
-            response = beermenu.beermenu_del_item(request, users.get_current_user())
+            response = beermenu.beermenu_del_item(
+                request, users.get_current_user())
             return Response(response)
 
 
@@ -99,13 +103,16 @@ def admin_edit_bottlemenu():
     if request.method == 'POST':
         oper = request.form['oper']
         if oper == "add":
-            response = bottlemenu.bottlemenu_add_item(request, users.get_current_user())
+            response = bottlemenu.bottlemenu_add_item(
+                request, users.get_current_user())
             return Response(response)
         if oper == "edit":
-            response = bottlemenu.bottlemenu_edit_item(request, users.get_current_user())
+            response = bottlemenu.bottlemenu_edit_item(
+                request, users.get_current_user())
             return Response(response)
         if oper == "del":
-            response = bottlemenu.bottlemenu_del_item(request, users.get_current_user())
+            response = bottlemenu.bottlemenu_del_item(
+                request, users.get_current_user())
             return Response(response)
 
 
@@ -117,7 +124,7 @@ def admin_linestatus():
         linestatus_age=linestatus_age,
         linestatus_beer=linestatus_beer,
         linestatus_bartender=linestatus_bartender,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 @users.login_required
@@ -126,7 +133,7 @@ def admin_auditlog():
     return render_template(
         'auditlog.html',
         auditlog=auditlog,
-        current_user = users.template_auth_params())
+        current_user=users.template_auth_params())
 
 
 def warmup():
@@ -142,14 +149,14 @@ def warmup():
     warm5 = beermenu.get_auditlog()
     warm6, _, _ = beermenu.get_linestatus()
     warm7 = content_admin.get_content_cache()
-    if (warm0 and
-        isinstance(warm1, list) and
-        isinstance(warm2, list) and
-        isinstance(warm3, dict) and
-        isinstance(warm4, dict) and
-        isinstance(warm5, list) and
-        isinstance(warm6, dict) and
-        isinstance(warm7, dict)):
+    if (warm0
+        and isinstance(warm1, list)
+        and isinstance(warm2, list)
+        and isinstance(warm3, dict)
+        and isinstance(warm4, dict)
+        and isinstance(warm5, list)
+        and isinstance(warm6, dict)
+            and isinstance(warm7, dict)):
         return render_template(
             'warmup.html',
             warmup_message='Feeling warm and toasty!')
