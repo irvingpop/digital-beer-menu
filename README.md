@@ -27,13 +27,25 @@ It's awesome because it is virtually free (costs pennies per month at most), rid
 1. Configure OAuth credentials: https://console.developers.google.com/apis/credentials
 
 # Migrating data from another beermenu project
-1. ??
+1. Export data using the [Entities Export](https://console.cloud.google.com/datastore/entities/export) feature in the gcloud datastore UI
+1. Download them to your machine
+    ```
+    gsutil -m cp -r gs://bucket/datestamp .
+    ```
+1. Import them to the datastore
+    ```
+    curl -X POST localhost:8081/v1/projects/beermenu-v3:import \
+      -H 'Content-Type: application/json' \
+      -d '{"input_url":"/Users/irving/Downloads/beermenu-backup-2020-11-29/2020-11-29T01:55:10_56249.overall_export_metadata"}'
+    ```
 
+You can also move backups between projects by downloading the export to your local machine, and then uploading them to a bucket in another project and importing.
 
 
 Credits
 -------
-kamalgill's gae-init project
+
+kamalgill's [gae-init project](https://github.com/gae-init/gae-init)
 
 Project template layout was heavily inspired by Francisco Souza's
 [gaeseries Flask project][gaeseries]
