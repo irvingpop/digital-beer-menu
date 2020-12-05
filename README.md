@@ -22,6 +22,10 @@ It's awesome because it is virtually free (costs pennies per month at most), rid
     ```
 
 # Deploying
+1. IF dependencies have changed, update the requirements.txt file (Google Cloud Build will use this):
+    ```
+    poetry export --without-hashes -o requirements.txt
+    ```
 1. Configure secrets in a `env-production.yaml` file - see `env-production.yaml.example`
 1. `gcloud app deploy` to deploy
 1. Configure OAuth credentials: https://console.developers.google.com/apis/credentials

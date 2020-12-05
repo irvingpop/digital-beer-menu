@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
     datatype: 'json',
     jsonReader : { repeatitems: false },
     mtype: 'POST',
-    colNames:[ 'Edit', 'Beer #', 'Beer Name', 'Brewery', 'Origin', '%ABV', 'Size', 'Unit of Measurement', 'Price $','On Tap', 'Link URL', 'Changed by', 'Line #', 'Date of last purchase', 'Cost per Oz', 'Freshest tapped Keg'],
+      colNames: ['Edit', 'Beer #', 'Beer Name', 'Brewery', 'Origin', '%ABV', 'Size', 'Unit of Measurement', 'Price $', 'Price 32.oz TO GO', 'On Tap', 'Link URL', 'Changed by', 'Line #', 'Date of last purchase', 'Cost per Oz', 'Freshest tapped Keg'],
     colModel :[
 	{name:'act', index:'act', width:25, align:'center', sortable:false, search:false, formatter:'actions',
 		formatoptions:{
@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
 	{name:'size', index:'size', width:25, align:'center',sortable:true,  editable:true, edittype:'text', editoptions: {size:10, maxlength: 10}, editrules: {required:true, number:true}, search:false },
 	{name:'meas', index:'meas', width:25, align:'center', sortable:true, editable:true, edittype:'select', editoptions: {value: {oz:'oz',L:'L'}}, editrules: {required:true}, search:false },
 	{name:'price', index:'price', width:25, align:'center',sortable:true,  editable:true, edittype:'text', editoptions: {size:10, maxlength: 10}, editrules: {required:true, number:true}, search:false },
+    {name: 'togo_price', index: 'togo_price', width: 25, align: 'center', sortable: true, editable: true, edittype: 'text', editoptions: { size: 10, maxlength: 10 }, editrules: { required: false, number: true }, search: false },
 	{name:'active', index:'active', width:25, align:'center', sortable:true, editable:true, edittype:'checkbox', editoptions: { value:"true:false" }, formatter:'checkbox', stype: 'select', searchoptions: { sopt:['eq','ne'], value:':All;true:Yes;false:No' }},
 	{name:'url', index:'url', width:100, sortable:false, hidden: true, editable:true, edittype:'text', editoptions: {size:100,maxlength:150}, editrules: {edithidden: true, required:false} },
 	{name:'bartender', index:'bartender', width:25, sortable:false, hidden: true, editable:true, edittype:'text', editoptions: {size:30,maxlength:50}, editrules: {edithidden: true, required:true} },
@@ -94,4 +95,4 @@ jQuery(document).ready(function(){
         // grid.trigger("reloadGrid",[{page:1}]);
         return [true];
     };
-}); 
+});

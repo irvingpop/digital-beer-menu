@@ -22,6 +22,10 @@ app.add_url_rule('/', 'home', view_func=views.disp_home)
 app.add_url_rule('/menu', 'menu', view_func=views.disp_menu)
 app.add_url_rule('/menu/', 'menu', view_func=views.disp_menu)
 
+# Bottle Menu
+app.add_url_rule('/menu_bottles', 'menu_bottles', view_func=views.disp_bottlemenu)
+app.add_url_rule('/menu_bottles/', 'menu_bottles', view_func=views.disp_bottlemenu)
+
 # FAQ
 app.add_url_rule('/faq', 'faq', view_func=views.disp_faq)
 

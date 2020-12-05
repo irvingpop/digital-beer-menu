@@ -19,7 +19,7 @@ def clear_caches_bottlemenu():
 
 @cache.memoize()
 def get_bottlemenu():
-    bottlemenu = models.BottleMenu.query(models.BottleMenu.active).fetch()
+    bottlemenu = models.BottleMenu.query(models.BottleMenu.active == True).fetch()
     bottlemenu_sorted = sorted(
         bottlemenu,
         key=lambda self: util.strip_accents(
