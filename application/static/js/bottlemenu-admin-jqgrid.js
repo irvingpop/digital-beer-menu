@@ -30,7 +30,7 @@ jQuery(document).ready(function(){
 	{name:'origin', index:'origin', width:25, align:'center', sortable:true, editable:true, edittype:'text', editoptions: {size:20, maxlength: 20}, editrules: {required:true}, searchoptions: { sopt: ['cn', 'eq', 'ne' ]} },
 	{name:'abv', index:'abv', width:25, align:'center',sortable:true,  editable:true, edittype:'text', editoptions: {size:10, maxlength: 10}, editrules: {required:true, number:true}, search:false },
 	{name:'size', index:'size', width:25, align:'center',sortable:true,  editable:true, edittype:'text', editoptions: {size:10, maxlength: 10}, editrules: {required:true, number:true}, search:false },
-	{name:'meas', index:'meas', width:25, align:'center', sortable:true, editable:true, edittype:'select', editoptions: {value: {oz:'oz',L:'L'}}, editrules: {required:true}, search:false },
+    { name: 'meas', index: 'meas', width: 25, align: 'center', sortable: true, editable: true, edittype: 'select', editoptions: { value: { oz: 'oz', mL: 'mL', L: 'L' } }, editrules: { required: true }, search: false },
     {name:'style', index:'style', width:25, align:'center', sortable:true, editable:true, edittype:'text', editoptions: {size:20, maxlength: 20}, editrules: {required:true}, searchoptions: { sopt: ['cn', 'eq', 'ne' ]} },
 	{name:'price', index:'price', width:25, align:'center',sortable:true,  editable:true, edittype:'text', editoptions: {size:10, maxlength: 10}, editrules: {required:true, number:true}, search:false },
 	{name:'active', index:'active', width:25, align:'center', sortable:true, editable:true, edittype:'checkbox', editoptions: { value:"true:false" }, formatter:'checkbox', stype: 'select', searchoptions: { sopt:['eq','ne'], value:':All;true:Yes;false:No' }},

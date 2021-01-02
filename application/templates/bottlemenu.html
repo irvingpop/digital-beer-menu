@@ -41,7 +41,10 @@
               <td>{{item.origin}}</td>
               <td>{{item.style}}</td>
               <td>{{ '%.3g' % item.abv }}</td>
-              <td>{{ '%.3g' % item.size }}{{item.meas}}</td>
+              {# Auto-convert L to mL, if less than 1L #}
+              {%- if item.meas == "L" and item.size < 1.0 -%} <td>{{ '%.3g' % (item.size * 1000) }}mL</td>
+                {%- else -%} <td>{{ '%.3g' % item.size }}{{item.meas}}</td>
+                {%- endif %}
             </tr>
           {% endfor %}
         </tbody>
